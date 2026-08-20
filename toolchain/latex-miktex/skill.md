@@ -119,7 +119,11 @@ LaTeX Workshop 插件直接安装使用，我找了IEEE TAC的模板打开。
 
 [Pandoc vs LaTeXML for LaTeX conversion - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/698081/pandoc-vs-latexml-for-latex-conversion)
 
+[如何将LaTeX转化为html并推流 - 知乎](https://zhuanlan.zhihu.com/p/648587138)
+
 [将LaTeX文档发布到Hugo博客的方法背景 在数学理论和其他技术领域，文章通常采用 LaTeX 格式编写，并最终渲染为 - 掘金](https://juejin.cn/post/7393533304505794611)
+
+[fengidri/tex2html: 把tex换成html](https://github.com/fengidri/tex2html)
 
 | 特性 | **make4ht** | **lwarp** | **LaTeXML** | **Pandoc** |
 | :--- | :--- | :--- | :--- | :--- |
