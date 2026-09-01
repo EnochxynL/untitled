@@ -139,7 +139,7 @@ MCP 依托于网络应用（https）、可执行文件或脚本（stdio）运行
 [内置技能目录 | Hermes Agent](https://hermes-agent.nousresearch.com/docs/zh-Hans/reference/skills-catalog)
 [Skills 系统 | Hermes Agent](https://hermes-agent.nousresearch.com/docs/zh-Hans/user-guide/features/skills)
 
-所有 skills 存放在 `~/.hermes/skills/` 中。全新安装时，捆绑的 skills 会从仓库复制过来（Hermes 在执行 `hermes update` 时也会同步内置技能，但同步清单会尊重本地删除和用户编辑）。通过 Hub 安装和 agent 创建的 skills 也存放在此处。agent 可以修改或删除任何 skill。
+所有 skills 存放在 `~/.hermes/skills/` 中。**全新安装时，捆绑的 skills 会从仓库复制过来**（Hermes 在执行 `hermes update` 时也会同步内置技能，但同步清单会尊重本地删除和用户编辑）。通过 Hub 安装和 agent 创建的 skills 也存放在此处。agent 可以修改或删除任何 skill。
 
 如果你在 Hermes 之外维护 skills——例如，供多个 AI 工具使用的共享 `~/.agents/skills/` 目录——你可以告诉 Hermes 也扫描这些目录。在 ~/.hermes/config.yaml 的 skills 部分下添加 external_dirs：
 
