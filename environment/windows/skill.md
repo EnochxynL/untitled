@@ -1,18 +1,73 @@
 
-```bash
-winget install --accept-package-agreements --source msstore --name "WPS Office X64"
-winget install --accept-package-agreements --source msstore --name "QQ桌面版"
-winget install --accept-package-agreements --source msstore --name "腾讯会议"
-winget install --accept-package-agreements --source msstore --name "金山文档"
-winget install --accept-package-agreements --source msstore --name "腾讯文档"
-winget install --accept-package-agreements --source msstore --name "网易云音乐"
-winget install --accept-package-agreements --source msstore --name "夸克网盘"
-winget install --accept-package-agreements --source msstore --name "夸克"
-winget install --accept-package-agreements --source msstore --name "迅雷12"
-winget install --accept-package-agreements --source msstore --name "百度翻译-轻快多语种"
-winget install --source msstore --name "百度网盘"
-winget install --source msstore --name "微信"
-```
+
+## Common Install
+
+### PE 镜像制作
+
+#### NT5 时代
+
+[[无忧首发]从0开始, 用WinBuilder一步一步制作自己的带中文支持的英文版PE - PE讨论区 - 无忧启动论坛 - Powered by Discuz!](https://bbs.wuyou.net/forum.php?mod=viewthread&tid=125756)
+[以 Ramdisk 方式启动 WinPE 之 FAQ 不完整版（附电子书下载） - PE讨论区 - 无忧启动论坛 - Powered by Discuz!](https://bbs.wuyou.net/forum.php?mod=viewthread&tid=82943)
+
+以我一款“大白菜PE”的`DBC2003.ISO`为例，是**模板继承 + 手工再造的混血**：
+
+- 外圈（目录结构、SETUPLDR、WINNT.XPE 写法）= 老毛桃系 RAMDisk 模板，2010 年定型
+- 内层 = 2014→2018 年用无忧手工流水线重做的：PECMD 2012 当启动环境事实标准、USB3 驱动手塞、外置程序用 **7z 包**（老毛桃原版用 OP.WIM，作者换成了自己的方案）、PEINIT.EXE 自研
+- 单 PE 直启、无 EasyBoot 菜单——典型的"个人维护盘"，不是商业量产货
+- **盘里的指纹**：`\WXPE\SYSTEM32\BARTPE.EXE` 还在——制作者的基底或工具链与 BartPE 体系有血缘。但注意：BartPE 默认产物是**非 RAM 盘**直读光盘版，而且不带 PECMD；RAMDisk + `.IS_` + PECMD 这套是中文圈子（无忧启动）在 BartPE 基础上再加工的产物。
+
+| 工具 | 原理 | 地位 |
+|---|---|---|
+| **Barts PE Builder (BartPE)** | 读 XP/2003 安装源，靠**插件体系**（每个插件声明"装哪个软件、拷哪些文件、注册表改什么"）自动拼出一个可引导 PE。关键机制：整棵注册表加载进 RAM、不写回介质，所以能从只读光盘跑起来 | 当年个人从零做 PE 的绝对主力，最后版本 3.0.23 |
+| **WinBuilder** | 同思路的脚本化后辈，用脚本而非插件控制每个文件 | 无忧启动论坛有"从0开始用 WinBuilder 做中文 PE"的经典教程，2003 时代是 BartPE 的补充 |
+| **无忧手工流水线** | 老毛桃的《以 Ramdisk 方式启动 WinPE 之 FAQ》就是说明书：拼精简 I386 → 写 TXTSETUP.SIF/SETUPREG.HI_ → makecab 压成 `.IS_` → 写 WINNT.XPE → 出 ISO | 我们上一轮拆出来的那条链路，本来就是公开文档 |
+
+#### Windows OPK (OEM Preinstallation Kit) 或 WAIK (Windows Automated Installation Kit)
+
+当时最“正宗”的方法，需要用到微软为OEM厂商或系统部署提供的专业工具包。对于Windows XP/2003时代的PE（通常称为**WinPE 1.x**），官方工具是 **Windows OPK** 或早期的 **Windows AIK**。
+
+*   **核心工具**：`mkimg.cmd`。这是一个命令行脚本，用于从Windows XP或2003的安装光盘中提取文件，并打包成PE。
+*   **基本流程**：
+    1.  安装OPK或WAIK工具包。
+    2.  将工具包中的 `WINPE` 文件夹复制到工作目录。
+    3.  将Windows XP或2003的安装光盘放入光驱（或加载ISO镜像）。
+    4.  在命令行中运行 `mkimg.cmd [光盘盘符] [目标文件夹]`。
+    5.  命令执行后，便会在目标文件夹生成一个包含PE文件的ISO镜像。
+
+微软还曾发布过基于特定系统的专用PE版本，如基于 **Windows XP SP2** 的 **WinPE 2004** 和基于 **Windows Server 2003 SP1** 的 **WinPE 2005**。这些是独立的工具包，内部同样使用 `mkimg.cmd` 等工具进行定制。
+
+制作老版本PE时，有几个关键点需要注意：
+
+1.  **系统与工具匹配**：制作工具（OPK/WAIK/BartPE）必须与你打算作为“原料”的操作系统（Windows XP/2003）版本相匹配。
+2.  **硬件驱动问题**：老版本PE原生不支持AHCI、USB 3.0等现代硬件标准。在新电脑上启动很可能会找不到硬盘或无法识别USB设备，需要提前将对应驱动整合进PE。
+3.  **软件兼容性**：为这些老PE开发的工具和插件（Plugin）大多年代久远，可能难以找到或在新硬件上无法运行。
+4.  **中文支持**：使用BartPE时，需要额外下载并配置中文语言插件（如 `chinese_chs.lng`）才能正常显示中文。
+
+#### NT6 时代
+
+
+
+
+### 启动盘镜像封装
+
+所谓"一键制作"几乎都不是从零生成，而是：
+
+- **老九 WinPE 老毛桃修改版"撒手不管版"(070911)**：2007-09-11 发布，核心系统仅 26MB、整包 108.5MB，PECMD + WIM 驱动，系统本体就是 ISO 镜像。这是当年流传最广的**成品 PE 母盘**——你手上这张盘的目录结构（`MINIPE` + `WXPE` + `WINNT.XPE`）就是老毛桃系模板的直接后裔。
+- **通用PE工具箱 / 大白菜 / 老毛桃U盘版**：本质 = 预置 PE 镜像 + 引导程序（grub4dos / setupldr / UD三分区）+ 写入器。知乎上"老毛桃U盘制作软件是怎么实现的"问的就是这个，答案就是"镜像早就做好了，工具只负责把引导扇区写进 U盘"。
+- **EasyBoot**（和 UltraISO 同门 EZB Systems）：多合一光盘的**引导菜单制造器**——做个菜单界面，选 PE 就链载 setupldr、选 DOS 就链载软盘镜像，当年"N合一维护盘"的标配。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 认识系统
 
