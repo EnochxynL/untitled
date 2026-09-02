@@ -70,6 +70,10 @@ uv pip install --python ./venv/bin/python markdownify
 
 使用 `cc-switch` 添加 Custom Endpoint 配置。注意：Hermes 已内置各供应商官方配置，`cc-switch` 在此用于 Custom Endpoint，与 Claude Code 和 CodeX 中用法不同。
 
+如果想看各个模型和 Agent 的能力，可以参考[AI雷达](https://codexradar.com/en/)
+
+临时API在这找[AIProbe](https://aiprobe.yumeapi.cn/)
+
 ### Web 配置
 
 [网页搜索与提取 | Hermes Agent](https://hermes-agent.nousresearch.com/docs/zh-Hans/user-guide/features/web-search)
@@ -133,6 +137,7 @@ MCP 依托于网络应用（https）、可执行文件或脚本（stdio）运行
 
 ### Skill 管理
 
+[500+ Agent Skills for Claude Code, Cursor, Antigravity & AI Coding Assistants](https://agentpedia.codes/agent-skills)
 [The Agent Skills Directory](https://www.skills.sh/)
 [Agent Skills Overview - Agent Skills](https://agentskills.io/home)
 [Open Skills - Discover Awesome Agent Skills](https://openskills.cc/)
@@ -206,6 +211,8 @@ CC Switch 可管理配置文件、供应商、对话记录、MCP、Skill 等。�
 CC Switch 已包含会话管理功能，但 CC Sessions 更专业，支持删除、修复、备份、统计。
 
 ### 对话记录管理与迁移
+
+[hermes-session-viewer/README-CN.md at main · shaocc1234/hermes-session-viewer](https://github.com/shaocc1234/hermes-session-viewer/blob/main/README-CN.md)
 
 未完待续
 
