@@ -21,9 +21,20 @@ metadata:
 
 ## Overview
 
-PlatformIO 是面向嵌入式开发的跨平台 IDE 工具链——它以 VSCode 扩展的形式工作，通过 `platformio.ini` 管理项目配置，由 pio 包管理器统一管理工具链、框架和库依赖。与 Keil/IAR 等传统 IDE 不同，PlatformIO 不绑定特定芯片厂商，一套配置适配数百种开发板和十几种框架。
+PlatformIO 是面向嵌入式开发的跨平台 IDE 工具链——它以 VSCode 扩展的形式工作，通过 `platformio.ini` 管理项目配置，由 pio 包管理器统一管理工具链、框架和库依赖。
 
-PlatformIO 的核心抽象分为四层：**Platforms**（芯片架构和工具链）、**Frameworks**（软件生态，如 Arduino、STM32Cube、ESP-IDF）、**Boards**（具体板型配置）、**Projects**（`platformio.ini` 项目描述文件）。
+超越 Keil/IAR 等传统 IDE 的特点：
+- 多样的开发板和框架支持
+- 多样的板级支持包（DFP、SDK、BSP）
+- 多样的算法支持库（软件仓库、包管理器）
+- 面向对象、多线程等编程特性（由框架和库提供）
+- 跨平台支持（Windows、Linux）
+
+PlatformIO 的核心抽象分为四层：
+- **Platforms** 芯片架构的适配：工具链、SVD
+- **Frameworks** 厂家生态的框架：reg51.h、HAL库（CMSIS-Core、STM32Cube、ESP-IDF）、集成HAL的软件脚手架（Arduino、Zephyr、RT-Thread）；也可以不添加，手动导入库，如STM32CubeMX生成的HAL库。
+- **Boards**（具体板型配置）
+- **Projects**（`platformio.ini` 项目描述文件）
 
 ## When to Use
 
