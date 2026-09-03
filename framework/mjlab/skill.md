@@ -1,3 +1,31 @@
+# 认识工具
+
+## 认识mujoco
+
+[(80 封私信 / 32 条消息) 几个常见机器人仿真软件的比较（详细版） - 知乎](https://zhuanlan.zhihu.com/p/12193176654)
+
+## 认识RoboCup 3D比赛环境
+
+[RoboCup Simulation / RCSSServerMJ · GitLab](https://gitlab.com/robocup-sim/rcssservermj)
+
+## 认识mjlab任务
+
+[mjlab · PyPI](https://pypi.org/project/mjlab/)
+
+[如何新增一个 G1 RL 任务（从 0 到可训练） — mjlab Documentation](https://www.nagi.fun/mjlab-homierl/source/walkthrough/how_to_add_g1_task.html)
+
+mjlab和isaac lab管理任务的机制类似，`train.py`和`play.py`会`import mjlab.tasks`导入内置任务。教程让我们clone源码来使用mjlab，并把自己的任务写进`src/mjlab/tasks/<your_task>/`，我认为大可不必，完全可以在自己的脚本导入自己的`tasks`。毕竟，什么项目都clone源码来改的习惯很不好，不是所有项目都需要大改。
+
+# 工具链安装
+
+## 安装mujoco
+
+[(79 封私信 / 26 条消息) 如何在ubuntu20.04安装mujoco - 知乎](https://zhuanlan.zhihu.com/p/535806578)
+
+pip正常安装即可，可执行程序叫`python -m mujoco.viewer`
+
+conda下安装用`mamba install mujoco`可执行程序叫`mujoco-simulate`
+
 # mjlab package
 
 [MJLab与IsaacLab_RL运控教学文档 - Robotics Tutorial](http://robotics-tutorial.dmbot.cn/05_%E8%BF%90%E5%8A%A8%E6%8E%A7%E5%88%B6/40_%E4%BB%BF%E7%9C%9F/MJLab%E4%B8%8EIsaacLab_RL%E8%BF%90%E6%8E%A7%E6%95%99%E5%AD%A6%E6%96%87%E6%A1%A3/#mjlab)
