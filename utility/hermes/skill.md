@@ -63,6 +63,7 @@ uv pip install --python ./venv/bin/python markdownify
 
 ### LLM API 配置
 
+[ChatGPT充值订阅(149元/月)](https://sites.google.com/view/anyofai/)
 [大模型服务平台百炼控制台](https://bailian.console.aliyun.com/cn-beijing#/home)
 [首页-开发者工作台-API管理与控制台-千问AI平台](https://platform.qianwenai.com/home)
 
@@ -73,6 +74,11 @@ uv pip install --python ./venv/bin/python markdownify
 如果想看各个模型和 Agent 的能力，可以参考[AI雷达](https://codexradar.com/en/)
 
 临时API在这找[AIProbe](https://aiprobe.yumeapi.cn/)
+
+代充入口：
+
+
+[ChatGPT Plus 代充 | 在线充值一键升级 Plus 会员 | GETGPT Pro](https://getgpt.pro/purchase?order_id=GETGPT20260722W18LBM6CD92EB8)
 
 ### Web 配置
 
