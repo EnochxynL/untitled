@@ -210,6 +210,16 @@ sudo chmod 777 /dev/ttyUSB0
 
 板型列表可通过 [PlatformIO Boards Explorer](https://platformio.org/boards) 或 `pio boards` 命令查询。自定义板型可参考 `~/.platformio/platforms/*/boards/` 下的 JSON 配置文件，或 [PlatformIO Development Platforms](https://github.com/platformio?query=platform-) 仓库下的 boards 目录。
 
+## Common Pitfalls
+
+### RTOS 选型参考
+
+- Arduino的软件包是最丰富的，但是要注意不是支持所有平台
+- CubeMX的软件包有STM32官方背书，在STM32领域无人匹敌
+- Keil的CMSIS软件包也有DSP、NN这样优秀的库，但是跨平台是个难题
+- FreeRTOS一般可以嵌进其他框架内，是大多数开发平台的“亲儿子”，CubeMX、Keil、TI MSPM0 SDK、Arduino等都直接支持。FreeRTOS只关注于任务调度，其他代码更方便面向底层。
+- RT-Thread虽然优美但是管得太多，不适合与CubeMX等其他框架共存。例如STM32CubeMX甚至连ldscript和startup都不给它适配。gcc和它的libc库冲突。不光是任务调度，还有外设驱动、libc，往linux的方向上靠了，且抢了Arduino、HAL、micropython等的工作。这注定它不能尽最大可能适配所有芯片。
+
 ## Verification Checklist
 
 * [ ] **PlatformIO 可用**
