@@ -1,0 +1,7 @@
+- [lkundrak/dev86: C compiler, assembler and linker environment for the production of 8086 executables](https://github.com/lkundrak/dev86)
+- [v3.sk](https://v3.sk/~lkundrak/dev86/)
+- [FreshPorts -- devel/dev86: 8086 development tools](https://www.freshports.org/devel/dev86)
+- [8086 bios源码_mob649e816ab022的技术博客_51CTO博客](https://blog.51cto.com/u_16175525/12874037)
+- [用C语言开发BIOS程序的实现方法-剑心通明-ChinaUnix博客](https://blog.chinaunix.net/uid-20214278-id-1717289.html)
+- [惊艳的Open WATCOM C/C++ - 知乎](https://zhuanlan.zhihu.com/p/76897731)
+- [Open Watcom V2](https://github.com/open-watcom)
